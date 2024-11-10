@@ -1,0 +1,42 @@
+.vh-100 {
+    height: 100vh !important;
+  }
+  
+  .d-flex {
+    display: flex !important;
+  }
+  
+  .align-items-center {
+    align-items: center !important;
+  }
+  
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(180deg, #4e73df 10%, #224abe 100%) !important;
+    background-size: cover;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .text-gray {
+    color: #6c757d !important;
+  }
+  
+  .p, .text-gray {
+    margin-bottom: 10%;
+  }
+
+  .logo{
+    width: 50%;
+    transform: rotate(1deg);
+  }
+
+  .body{
+    background-color: #180B65 ;
+  }

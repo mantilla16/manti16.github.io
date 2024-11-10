@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Servicio por ambito</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Basic Card Example -->
+                <div class="card shadow mb-4 ">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 ">Servicio por ámbito</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-sm-10 col-md-5">
+                                    <div id="dataTable_filter" class="dataTables_filter">
+                                        <label>Buscar<input type="text" id="ftabla" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 col-md-5 d-flex justify-content-end">
+                                    <button class="btn btn-success btn-sm"  data-toggle="modal" data-target="#crearModal" title="Crear">Crear nuevo ambito </button>                                
+                                </div>
+                            </div>
+
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo de referencia</th>
+                                        <th>Tipo</th>
+                                        <th>Ambito</th>
+                                        <th>Estado</th>
+                                        <th>Opciones</th>
+                                </thead>
+                                <tbody id="tbody">                                    
+                                </tbody>
+                            </table>
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-sm-10 col-md-5">
+                                    <ul class="pagination">
+                                        <li id="prev" class="page-item"><a class="page-link" href="#" onclick="prevPage()">Anterior</a></li>
+                                        <li id="next" class="page-item"><a class="page-link" href="#" onclick="nextPage()">Siguiente</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    
+    <!-- Modal para editar -->
+    <div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editAmbitoId">
+                    <div class="form-group">
+                        <label>Codigo de referencia</label>
+                        <input type="text" class="form-control fieldedit" id="editCodref">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select class="form-control selectRol" id="editTipo">
+                            <option >Seleccione un tipo</option>
+                            <option value="AMBULATORIO">Ambulatorio</option>
+                            <option value="HOSPITALARIO">Hospitalario</option>
+                            <option value="URGENCIAS">Urgencias</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ambito</label>
+                        <input type="text" class="form-control fieldedit" id="editAmbito" readonly> 
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select class="form-control selectRol" id="editEstado">
+                            <option >Seleccione un estado</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="saveEditAmbito" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear -->
+    <div class="modal fade" id="crearModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="crearModalLabel">Crear ambito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user" id="create-form">
+                        <div class="form-group">
+                            <label>Codigo de referencia</label>
+                            <input type="text" class="form-control fieldedit" id="createCodref" >
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select class="form-control selectRol" id="createtipo">
+                                <option >Seleccione un tipo</option>
+                                <option value="AMBULATORIO">Ambulatorio</option>
+                                <option value="HOSPITALARIO">Hospitalario</option>
+                                <option value="URGENCIAS">Urgencias</option>
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Ambito</label>
+                            <input type="text" class="form-control fieldedit" id="createfAmbito" readonly> 
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" id="createAmbito" class="btn btn-primary">Crear ambito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/servicio.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
