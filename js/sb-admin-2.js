@@ -79,12 +79,14 @@ jQuery(document).ready(function($){ //Mostrar la tabla en el index
   });  
 }); //Fin mostrar tabla en index
 
-  //Pare clave de la autenticacion: 
+  //Parte clave del uso de la autenticacion: Manejando la informacion guardada del usuario despues del login. 
+   
   /*
     Primero creamos una funcion para el logout, en esta funcion basicamente borramos todo lo que almacenamos en el localstorage.
     La informacion que guardamos en el localstorage la traemos en este caso de un enpoint que viene con la informacion del usuario.
-    Usamos el removeItem('nombre_variable') para borrar una variable previamente creada en el 
-  
+    Usamos el localStorage.removeItem('nombre_variable') para borrar una variable del localStorage previamente creada en el login.js
+
+    Nota: Esta function solo se ejecuta cuando se hace logout.
   */
   function logout() {
     localStorage.clear
@@ -94,6 +96,11 @@ jQuery(document).ready(function($){ //Mostrar la tabla en el index
       localStorage.removeItem('usuario');
       window.location.href = 'login.html';
   }
+
+  /*
+    Despues que hayamos guardado la informacion que traemos del usuario guardado podemos sacar esa informacion del localStorage, podemos usarla para manejar lo que queramos
+    En el front, por ejemplo en este desarrollo uso el rol que viene en el enpoint y lo almaceno en el localStorage para ocultar o mostrar las opciones de la barra lateral.
+  */
   document.addEventListener('DOMContentLoaded', () => {
     const rol = localStorage.getItem('rol');
 
