@@ -79,8 +79,15 @@ jQuery(document).ready(function($){ //Mostrar la tabla en el index
   });  
 }); //Fin mostrar tabla en index
 
-
+  //Pare clave de la autenticacion: 
+  /*
+    Primero creamos una funcion para el logout, en esta funcion basicamente borramos todo lo que almacenamos en el localstorage.
+    La informacion que guardamos en el localstorage la traemos en este caso de un enpoint que viene con la informacion del usuario.
+    Usamos el removeItem('nombre_variable') para borrar una variable previamente creada en el 
+  
+  */
   function logout() {
+    localStorage.clear
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token');
       localStorage.removeItem('rol');
